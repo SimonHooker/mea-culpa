@@ -9,7 +9,6 @@ import { GithubCircle } from "mdi-material-ui";
 const Footer = props => {
   const {
     company,
-    contact: { email },
   } = props.data.site.siteMetadata;
   return (
     <>
@@ -21,21 +20,7 @@ const Footer = props => {
         <div style={{ textAlign: "center" }}>
           <Typography variant="caption" component="span">
             ©{new Date().getFullYear()} {company}{" "}
-            <Hidden only={["xs", "sm"]}>–</Hidden>
-            <Hidden only={["xl", "lg", "md"]}>
-              <br />
-            </Hidden>{" "}
-            {email}
           </Typography>
-          <a
-            href="https://github.com/foxandgeese/tiny-agency"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <IconButton>
-              <GithubCircle />
-            </IconButton>
-          </a>
         </div>
       </footer>
     </>
@@ -49,9 +34,6 @@ export default props => (
         site {
           siteMetadata {
             company
-            contact {
-              email
-            }
           }
         }
       }

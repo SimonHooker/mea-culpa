@@ -40,17 +40,15 @@ const styles = theme => ({
     const {
       classes,
       data: {
-        Products: { edges: products },
-        Services: { edges: services },
+        AboutUs: { edges: aboutus },
+        Progress: { edges: progress },
+        Raiders: { edges: raiders },
         Basic: {
           siteMetadata: {
             domain,
             company,
             defaultTitle,
             preamble,
-            postamble,
-            defaultDescription,
-            contact: { email },
           },
         },
       },
@@ -58,7 +56,6 @@ const styles = theme => ({
     return (
       <Page>
         <SEO title={defaultTitle}>
-          <meta name="description" content={defaultDescription} />
           <link rel="canonical" href={domain} />
         </SEO>
         <div className={classes.text}>
@@ -76,38 +73,21 @@ const styles = theme => ({
             variant="h1"
             component="span"
           >
-            <span className={classes.angles}>&lt;</span> hi{" "}
+            <span className={classes.angles}>&lt;</span> Mea Culpa{" "}
             <span className={classes.angles}>&gt;</span>
           </Typography>
           <Typography paragraph gutterBottom variant="body1" component="span">
             {preamble}
           </Typography>
-          <Typography paragraph gutterBottom variant="body1" component="span">
-            {defaultDescription}
-          </Typography>
         </div>
         <div className={props.classes.tabs}>
           <Tabs
             items={[
-              ["Our Products", <Robot />, <List items={products} />],
-              ["Our Services", <Alien />, <List items={services} />],
+              ["About us", <Robot />, <List items={aboutus} />],
+              ["Progress", <Alien />, <List items={progress} />],
+              ["Our raiders", <Alien />, <List items={raiders} />],
             ]}
           />
-        </div>
-        <div className={classes.text}>
-          <Typography paragraph gutterBottom variant="body1" component="span">
-            {postamble}
-          </Typography>
-          <Typography
-            paragraph
-            color="primary"
-            gutterBottom
-            variant="h5"
-            component="span"
-          >
-            <span className={classes.angles}>&lt;</span> {email}{" "}
-            <span className={classes.angles}>&gt;</span>
-          </Typography>
         </div>
       </Page>
     );
@@ -121,31 +101,36 @@ export const query = graphql`
         company
         defaultTitle
         preamble
-        defaultDescription
-        postamble
-        contact {
-          email
-        }
       }
     }
-    Products: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/products/" } }
+    AboutUs: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/aboutus/" } }
     ) {
       edges {
         node {
           html
           frontmatter {
             title
-            siteLink
             imageLink
-            customWidth
-            customTopPadding
           }
         }
       }
     }
-    Services: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/services/" } }
+    Progress: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/progress/" } }
+    ) {
+      edges {
+        node {
+          html
+          frontmatter {
+            title
+            imageLink
+          }
+        }
+      }
+    }
+    Raiders: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/raiders/" } }
     ) {
       edges {
         node {

@@ -3,15 +3,9 @@ module.exports = {
   siteMetadata: {
     company: "Mea Culpa",
     domain: "https://mea-culpa.net",
-    defaultTitle: "Website Change Monitoring Products and Services",
+    defaultTitle: "Mea Culpa, Chamber of Aspects",
     preamble:
-      "We kill things",
-    defaultDescription:
-      "Yaaaaaay",
-    postamble: "Think we can help your project? We'd love to hear from you:",
-    contact: {
-      email: "hello@mea-culpa.net",
-    },
+      "Chamber of Aspects",
     menuLinks: [],
   },
   pathPrefix: "/aeiedil",
