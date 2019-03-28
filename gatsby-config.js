@@ -38,5 +38,14 @@ module.exports = {
         trackingId: "UA-120162676-1",
       },
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'mea-culpa.net',
+        region: 'eu-west-1',
+        protocol: 'https',
+        hostname: 'www.mea-culpa.net'
+      }
+    }
   ],
 };

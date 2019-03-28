@@ -1,14 +1,16 @@
 {
-  "name": "tiny-agency",
+  "name": "mea-culpa",
   "version": "1.0.0",
-  "author": "Peter Bray <peter@foxandgeese.com>",
-  "description": "Simple Gatsby.js starter that uses material design and that's perfect for tiny agencies.",
+  "author": "Simon Hooker <simon@strayegg.com>",
+  "description": "Mea Culpa, Chamber of Aspects, WoW guild site",
   "scripts": {
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "build": "gatsby build",
     "serve": "gatsby serve",
-    "deploy": "gatsby-plugin-s3 deploy"
+    "build": "gatsby build",
+    "upload": "cross-env AWS_PROFILE=meaculpa gatsby-plugin-s3 deploy --yes",
+    "invalidate": "cross-env AWS_PROFILE=meaculpa aws cloudfront create-invalidation --distribution-id E2GG76SC4C6F70 --paths \"/*\"",
+    "deploy": "npm run build && npm run upload && npm run invalidate"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -31,5 +33,8 @@
     "react-jss": "^8.6.1",
     "react-swipeable-views": "^0.13.1",
     "react-swipeable-views-utils": "^0.13.1"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
   }
 }
