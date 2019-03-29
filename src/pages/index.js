@@ -4,6 +4,7 @@ import SEO from "../components/SEO";
 import Page from "../components/Page";
 import List from "../components/List";
 import Tabs from "../components/Tabs";
+import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import { Alien } from "mdi-material-ui";
@@ -55,40 +56,51 @@ const styles = theme => ({
     } = props;
     return (
       <Page>
+
         <SEO title={defaultTitle}>
           <link rel="canonical" href={domain} />
         </SEO>
-        <div className={classes.text}>
-          <center>
-            <Avatar className={classes.avatar}>
-              <a href={domain}>
-                <img src={logo} alt={company} className={classes.logo} />
-              </a>
-            </Avatar>
-          </center>
-          <Typography
-            paragraph
-            color="primary"
-            gutterBottom
-            variant="h1"
-            component="span"
-          >
-            <span className={classes.angles}>&lt;</span> Mea Culpa{" "}
-            <span className={classes.angles}>&gt;</span>
-          </Typography>
-          <Typography paragraph gutterBottom variant="body1" component="span">
-            {preamble}
-          </Typography>
-        </div>
-        <div className={props.classes.tabs}>
-          <Tabs
-            items={[
-              ["About us", <Robot />, <List items={aboutus} />],
-              ["Progress", <Alien />, <List items={progress} />],
-              ["Our raiders", <Alien />, <List items={raiders} />],
-            ]}
-          />
-        </div>
+
+        <Grid container justify="center" alignItems="stretch">
+          <Grid item sm={4}>
+            <div className={classes.text}>
+              <center>
+                <Avatar className={classes.avatar}>
+                  <a href={domain}>
+                    <img src={logo} alt={company} className={classes.logo} />
+                  </a>
+                </Avatar>
+              </center>
+              <Typography
+                paragraph
+                color="primary"
+                gutterBottom
+                variant="h1"
+                component="span"
+              >
+                <span className={classes.angles}>&lt;</span> Mea Culpa{" "}
+                <span className={classes.angles}>&gt;</span>
+              </Typography>
+              <Typography paragraph gutterBottom variant="body1" component="span">
+                {preamble}
+              </Typography>
+            </div>
+          </Grid>
+
+          <Grid item sm={8}>
+            <div className={props.classes.tabs}>
+              <Tabs
+                items={[
+                  ["About us", <Robot />, <List items={aboutus} />],
+                  ["Progress", <Alien />, <List items={progress} />],
+                  ["Our raiders", <Alien />, <List items={raiders} />],
+                ]}
+              />
+            </div>
+          </Grid>
+
+        </Grid>
+
       </Page>
     );
   };
